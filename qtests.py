@@ -1,8 +1,9 @@
-#import pandas as pd
-#import numpy as np
+import numpy as np
 
 def BoxPierceQ(cqlist,maxp,T):
-    return [T*sum(x**2 for x in cqlist[:p]) for p in range(1,maxp+1)]
+    cq = np.array(cqlist[:maxp])
+    return T*np.cumsum(np.power(cq,2))
 
-def LjungBoxQ(cqlist,maxp,T):    
-    return [T*(T+2)*sum((x**2)/(T-k-1) for k,x in enumerate(cqlist[:p])) for p in range(1,maxp+1)]
+def LjungBoxQ(cqlist,maxp,T):
+    cq = np.array(cqlist[:maxp])
+    return T*(T+2)*np.cumsum(np.power(cq,2)/np.arange(T-1,T-maxp-1,-1))

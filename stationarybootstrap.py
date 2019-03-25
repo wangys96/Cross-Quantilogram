@@ -2,9 +2,9 @@ import pandas as pd
 import numpy as np
 
 class BSDistribution:
-    """
+    '''
     A Distribution for bootstraping distribution p(s)=γ(1-γ)^(s-1)
-    """  
+    '''  
     def __init__(self,turning=0.01,maxlen=1500):
         self.Calculate(turning,maxlen)
 
@@ -16,29 +16,31 @@ class BSDistribution:
         self.mean = 1/turning
 
     def DF(self,PDF):
-        """
+        '''
         return a distribution function array from pdf array
-        """        
+        '''       
         return np.cumsum(PDF)
 
     def PDF(self,turning,maxlen):
-        """
+        '''
         return a probability density function array
-        """
+        '''
         pdf=np.power(np.full(maxlen,(1-turning)),np.arange(maxlen))*turning
         return np.concatenate(([1-np.sum(pdf)],pdf))
 
 dist = BSDistribution(0.01,1500)
 
 def Bootstrap(x1,x2,lag,bslength,bsd=dist,verbose=True):
-    """
+    '''
     Generate bootstrapped data
     input: x1 serie, 
            x2 serie, 
            x2's lag, 
            output length,
            procedure print.
-    """
+    '''
+    if not isinstance(bsd,BSDistribution):
+        raise TypeError("bsd must be BSDistribution instance")
     total,dtlen = 0,x1.shape[0]-lag
     K,L = [],[]
     while total<bslength:
@@ -53,6 +55,7 @@ def Bootstrap(x1,x2,lag,bslength,bsd=dist,verbose=True):
     for Ki,Li in zip(K,L):
         if verbose:
             print("Generating samples:{}/{}({:.1f}%)".format(total,bslength,(total/bslength*100)),end='\r')
+        if Li==0:continue
         x1output.append(newx1[Ki:Ki+Li])
         x2output.append(newx2[Ki:Ki+Li])
         total+=Li
