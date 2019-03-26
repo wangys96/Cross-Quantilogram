@@ -28,16 +28,21 @@ class BSDistribution:
         pdf=np.power(np.full(maxlen,(1-turning)),np.arange(maxlen))*turning
         return np.concatenate(([1-np.sum(pdf)],pdf))
 
+# 1500 times can be enough precise.Turning parameter usually takes 0.01.
 dist = BSDistribution(0.01,1500)
 
 def Bootstrap(x1,x2,lag,bslength,bsd=dist,verbose=True):
     '''
     Generate bootstrapped data
-    input: x1 serie, 
-           x2 serie, 
-           x2's lag, 
-           output length,
-           procedure print.
+    Input: 
+        x1: array-like, serie-1, 
+        x2: array-like, serie-2, 
+        lag: integer, x2's lag, 
+        bslength: integer, output length,
+        bsd: BSDistribution instance, the distribution for Li.
+        verbose: boolean, 
+    Output:
+        A tuple including 2 bootstrapped series x1,x2
     '''
     if not isinstance(bsd,BSDistribution):
         raise TypeError("bsd must be BSDistribution instance")

@@ -10,7 +10,7 @@ def CQBS(data1,a1,data2,a2,k,cqcl=0.95,testf=LjungBoxQ,testcl=0.95,
     '''
     Calculate Cross-Quantilogram result on many lags [1,k] and 1 particular quantile (a1,a2) from data2 to data1.
     Generating CQ data for bar plotting.
-    Return a 2D DataFrame. Shape:[lag, item(a dict{"cq","cq_lower","cq_upper","q","qc"})]
+    Return a DataFrame. Shape:[lag, item(a dict{"cq","cq_lower","cq_upper","q","qc"})]
     
     Input:
         data1: array-like, serie-1.
@@ -58,13 +58,13 @@ def CQBS_alphas(data1,a1list,data2,a2list,k=1,cqcl=0.95,testf=LjungBoxQ,testcl=0
     Calculate Cross-Quantilogram result on lags [1,k] and {a1list}×{a2list} quantile from data2 to data1.
     Generating CQ data for many line plottings or heatmap plotting.
     Return a 2D list of DataFrame(if all=True) or a 2D list of dict(if all=False). Shape:[row(data2),col(data1)]
-    It's slow beacuse of calling CQ_lags for len(a1list)×len(a2list) times.
+    It's slow beacuse of calling CQBS for len(a1list)×len(a2list) times.
 
     Input:
         data1: array-like, serie-1.
-        a1: array-like and between (0,1), quantiles of serie-1.
+        a1list: array-like and between (0,1), quantiles of serie-1.
         data2: array-like, serie-2 (k lagged).
-        a2: array-like and between (0,1), quantiles of serie-2.
+        a2list: array-like and between (0,1), quantiles of serie-2.
         k: optional non-negative integer, the serie-2's max lag, 1 as default.
         cqcl: optional float between (0,1), the level of confidence interval of CQ, 0.95 as default.
         testf: optional function, a function calculating the test statistics Q, qtests.LjungBoxQ as default.
@@ -97,7 +97,7 @@ def CQBS_years(data1,a1,data2,a2,k=1,window=1,cqcl=0.95,testf=LjungBoxQ,testcl=0
     Calculate rolling Cross-Quantilogram result on lags [1,k] and (a1,a2) quantile from data2 to data1.
     Generating CQ data for rolling line plotting.
     Return 1 DataFrame(if all=False) or a list of DataFrame(if all=True) at lag∈[1,k].
-    It's slow beacuse of calling CQ_lags for #years times.
+    It's slow beacuse of calling CQBS for #years times.
 
     Input:
         data1: array-like, serie-1.
