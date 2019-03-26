@@ -11,7 +11,7 @@ This repo has included:
 * `Cross-Quantilogram` accelerated by Numpy.
 * Stationary Bootstrap method accelerated by Numpy.
 * Portmenteau test(Ljung-Box or Box-Pierce) accelerated by Numpy.
-* 3 Typical CQ research procedures' API.      
+* Three Typical CQ methodologies'  APIs.      
 * Matplotlib results plotting for 3 typical methods.
 
 If you have any question or idea, please create issues or contact me:
