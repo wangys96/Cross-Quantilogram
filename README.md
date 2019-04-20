@@ -1,8 +1,7 @@
 Cross-Quantilogram
 ===========================
-## Introduction
 
-This is a Python3 implementation of the academic method `Cross-Quantilogram`   invented by [Han et al.(2016)](https://github.com/wangys96/Cross-Quantilogram/blob/master/docs/The%20Cross-Quantilogram%20Measuring%20quantile%20dependence%20and%20testing%20directional%20predictability%20between%20time%20series.pdf).
+This is a Python3 implementation of econometric method `Cross-Quantilogram`  invented by [Han et al.(2016)](https://github.com/wangys96/Cross-Quantilogram/blob/master/docs/The%20Cross-Quantilogram%20Measuring%20quantile%20dependence%20and%20testing%20directional%20predictability%20between%20time%20series.pdf).
 
 
 The `Cross-Quantilogram`(CQ) measures the quantile dependence between two time series. It can be applied to test the hypothesis that one time  series has no directional predictability to another. Stationary bootstrap method help establish the asymptotic distribution for CQ and the corresponding test statistics.
@@ -11,7 +10,7 @@ This repo has included:
 * `Cross-Quantilogram` accelerated by Numpy.
 * Stationary Bootstrap method accelerated by Numpy.
 * Portmenteau test(Ljung-Box or Box-Pierce) accelerated by Numpy.
-* 3 Typical CQ research procedures' API.      
+* Three Typical CQ methodologies'  APIs.      
 * Matplotlib results plotting for 3 typical methods.
 
 If you have any question or idea, please create issues or contact me:
