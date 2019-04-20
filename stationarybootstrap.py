@@ -1,9 +1,9 @@
 import pandas as pd
 import numpy as np
-
+"""
 class BSDistribution:
     '''
-    A Distribution for bootstraping distribution p(s)=γ(1-γ)^(s-1)
+    A Distribution for geometric distribution p(s)=γ(1-γ)^(s-1)
     '''  
     def __init__(self,turning=0.01,maxlen=1500):
         self.Calculate(turning,maxlen)
@@ -30,8 +30,9 @@ class BSDistribution:
 
 # 1500 times can be enough precise.Turning parameter usually takes 0.01.
 dist = BSDistribution(0.01,1500)
+"""
 
-def Bootstrap(x1,x2,lag,bslength,bsd=dist,verbose=True):
+def Bootstrap(x1,x2,lag,bslength,verbose=True):
     '''
     Generate bootstrapped data
     Input: 
@@ -39,20 +40,20 @@ def Bootstrap(x1,x2,lag,bslength,bsd=dist,verbose=True):
         x2: array-like, serie-2, 
         lag: integer, x2's lag, 
         bslength: integer, output length,
-        bsd: BSDistribution instance, the distribution for Li.
         verbose: boolean, 
     Output:
         A tuple including 2 bootstrapped series x1,x2
     '''
-    if not isinstance(bsd,BSDistribution):
-        raise TypeError("bsd must be BSDistribution instance")
+    #if not isinstance(bsd,BSDistribution):
+    #    raise TypeError("bsd must be BSDistribution instance")
     total,dtlen = 0,x1.shape[0]-lag
     K,L = [],[]
     while total<bslength:
         if verbose:
             print("Generating random blocks:{}/{}({:.1f}%)".format(total,bslength,(total/bslength*100)),end='\r')
         K.append(np.random.randint(dtlen-lag,size=10))
-        L.append(np.random.choice(bsd.maxlen+1,size=10,p=bsd.pdfarray))
+        #L.append(np.random.choice(bsd.maxlen+1,size=10,p=bsd.pdfarray))
+        L.append(np.random.geometric(p=0.01, size=10))
         total+=L[-1].sum()
     K,L = np.concatenate(K),np.concatenate(L)
     newx1,newx2=np.concatenate([x1[lag:]]*(L.max()//dtlen+2)),np.concatenate([x2[:dtlen]]*(L.max()//dtlen+2))
