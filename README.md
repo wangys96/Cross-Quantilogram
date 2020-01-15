@@ -33,7 +33,7 @@ I haven't finish it so there is not a `setup.py`, please just download and put i
 
 The User Guide is a Jupyter Notebook where I introduced the function details and the research methodology. 
 
-**[User Guide](https://nbviewer.jupyter.org/github/wangys96/Cross-Quantilogram/blob/master/docs/User%20Guide.ipynb). **
+[**User Guide**](https://nbviewer.jupyter.org/github/wangys96/Cross-Quantilogram/blob/master/docs/User%20Guide.ipynb) 
 
 
 To fully understand CQ and its methodology, you can refer to these papers:
