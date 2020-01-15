@@ -43,7 +43,6 @@ To fully understand CQ and its methodology, you can refer to these papers:
 * [Directional predictability from stock market sector indices to gold: A cross-quantilogram analysis](https://github.com/wangys96/Cross-Quantilogram/blob/master/docs/Directional%20predictability%20from%20stock%20market%20sector%20indices%20to%20gold%20A%20Cross-Quantilogram%20analysis.pdf)
 * [Does international oil volatility have directional predictability for stock returns Evidence from BRICS countries based on cross-quantilogram analysis](https://github.com/wangys96/Cross-Quantilogram/blob/master/docs/Does%20international%20oil%20volatility%20have%20directional%20predictability%20for%20stock%20returns%20Evidence%20from%20BRICS%20countries%20based%20on%20cross-quantilogram%20analysis.pdf)
 
-Then please read the 
 
 
 ## References
