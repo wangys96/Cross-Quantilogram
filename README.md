@@ -31,14 +31,19 @@ I haven't finish it so there is not a `setup.py`, please just download and put i
 
 ## Documents
 
-Firstly, to fully understand CQ and its methodology, you can start with reading these papers:
+The User Guide is a Jupyter Notebook where I introduced the function details and the research methodology. 
+
+**[User Guide](https://nbviewer.jupyter.org/github/wangys96/Cross-Quantilogram/blob/master/docs/User%20Guide.ipynb). **
+
+
+To fully understand CQ and its methodology, you can refer to these papers:
 
 * [The intraday directional predictability of large Australian stocks: A cross-quantilogram analysis](https://github.com/wangys96/Cross-Quantilogram/blob/master/docs/The-intraday-directional-predictability-of-large-Australian-_2017_Economic-M.pdf)
 * [Spillovers and Directional Predictability with a Cross-Quantilogram Analysis The Case of US and Chinese Agricultural Futures](https://github.com/wangys96/Cross-Quantilogram/blob/master/docs/Spillovers%20and%20Directional%20Predictability%20with%20a%20Cross-Quantilogram%20Analysis%20The%20Case%20of%20US%20and%20Chinese%20Agricultural%20Futures.pdf)
 * [Directional predictability from stock market sector indices to gold: A cross-quantilogram analysis](https://github.com/wangys96/Cross-Quantilogram/blob/master/docs/Directional%20predictability%20from%20stock%20market%20sector%20indices%20to%20gold%20A%20Cross-Quantilogram%20analysis.pdf)
 * [Does international oil volatility have directional predictability for stock returns Evidence from BRICS countries based on cross-quantilogram analysis](https://github.com/wangys96/Cross-Quantilogram/blob/master/docs/Does%20international%20oil%20volatility%20have%20directional%20predictability%20for%20stock%20returns%20Evidence%20from%20BRICS%20countries%20based%20on%20cross-quantilogram%20analysis.pdf)
 
-Then please read the [User Guide](https://nbviewer.jupyter.org/github/wangys96/Cross-Quantilogram/blob/master/docs/User%20Guide.ipynb). The User Guide is a Jupyter Notebook where I introduced the function details and the research methodology. 
+Then please read the 
 
 
 ## References
