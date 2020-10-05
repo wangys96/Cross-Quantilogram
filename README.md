@@ -4,34 +4,33 @@ Cross-Quantilogram
 This is a Python3 implementation of econometric method `Cross-Quantilogram`  invented by [Han et al.(2016)](https://github.com/wangys96/Cross-Quantilogram/blob/master/docs/The%20Cross-Quantilogram%20Measuring%20quantile%20dependence%20and%20testing%20directional%20predictability%20between%20time%20series.pdf).
 
 
-The `Cross-Quantilogram`(CQ) measures the quantile dependence between two time series. It can be applied to test the hypothesis that one time  series has no directional predictability to another. Stationary bootstrap method help establish the asymptotic distribution for CQ and the corresponding test statistics.
+The `Cross-Quantilogram`(CQ) is a correlation statistics that measures the quantile dependence between two time series. It can test the hypothesis that one time series has no directional predictability to another. Stationary bootstrap method helps establish the asymptotic distribution for CQ statistics and other corresponding test statistics.
 
-This repo has included:
-* `Cross-Quantilogram` accelerated by Numpy.
-* Stationary Bootstrap method accelerated by Numpy.
-* Portmenteau test(Ljung-Box or Box-Pierce) accelerated by Numpy.
-* Three Typical CQ methodologies'  APIs.      
+This repo includes:
+* `Cross-Quantilogram` statistics;
+* Stationary Bootstrap method;
+* Portmenteau test(Ljung-Box or Box-Pierce);
+* APIs for 3 Typical CQ methodologies'.      
 * Matplotlib results plotting for 3 typical methods.
 
-If you have any question or idea, please create issues or contact me:
-* Email: richardwang96@qq.com
-* WeChat: 89516821
 
-## Dependencies
+# Installation
 
-* Python 3
-* Numpy 1.16 + MKL
-* Panadas 0.23
-* statsmodels 0.9
-* matplotlib 3.0.2
+For python environment, I recommand you to install [Anaconda 3](https://www.anaconda.com/) which already includes the linear algebra libs. If you want to install `numpy` manually, for Windows+Intel user I recommanded Numpy+MKL ([you can get it here](https://www.lfd.uci.edu/~gohlke/pythonlibs/)) 
 
-I recommand to install [Anaconda 3](https://www.anaconda.com/) first, then Numpy+MKL ([you can get it here](https://www.lfd.uci.edu/~gohlke/pythonlibs/)).
+To install `Cross-Quantilogram` :
+```shell
+pip install setup.py
+```
+then try:
+```python
+import CrossQuantilogram
+```
 
-I haven't finish it so there is not a `setup.py`, please just download and put it to your projects' directory or `site-packages/`. The setuptool will soon be added.
 
-## Documents
+# Documents
 
-The User Guide is a Jupyter Notebook where I introduced the function details and the research methodology. 
+The User Guide is a Jupyter Notebook where I introduced the APIs and research methodologies:
 
 [**User Guide**](https://nbviewer.jupyter.org/github/wangys96/Cross-Quantilogram/blob/master/docs/User%20Guide.ipynb) 
 
@@ -44,7 +43,21 @@ To fully understand CQ and its methodology, you can refer to these papers:
 * [Does international oil volatility have directional predictability for stock returns Evidence from BRICS countries based on cross-quantilogram analysis](https://github.com/wangys96/Cross-Quantilogram/blob/master/docs/Does%20international%20oil%20volatility%20have%20directional%20predictability%20for%20stock%20returns%20Evidence%20from%20BRICS%20countries%20based%20on%20cross-quantilogram%20analysis.pdf)
 
 
+# Dependencies
 
-## References
+* Python 3
+* Numpy >= 1.16
+* Panadas >= 0.23
+* statsmodels >= 0.9
+* matplotlib >= 3.0.2
+
+
+# References
 
  Han H, Linton O, Oka T, et al. The cross-quantilogram: measuring quantile dependence and testing directional predictability between time series[J]. Journal of Econometrics, 2016, 193(1): 251-270.
+
+# Contacts
+
+If you have any question or idea, please create issues or contact me:
+* Email: richardwang96@qq.com
+* WeChat: 89516821
