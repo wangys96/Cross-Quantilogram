@@ -5,7 +5,7 @@ setup(
     author_email = "richardwang96@qq.com",
     url = "https://github.com/wangys96/Cross-Quantilogram",
     description = "Python3 implementation of Cross-Quantilogram statistics and analysis",
-    version = "0.0.2",
+    version = "1.0.0",
     license = "MIT",
 
     packages = find_packages("src"),

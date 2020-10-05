@@ -24,7 +24,7 @@ pip install setup.py
 ```
 then try:
 ```python
-import CrossQuantilogram
+import CrossQuantilogram as cq
 ```
 
 
