@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
-from .calculate import CQBS,CQBS_alphas,CQBS_years
+from .api import CQBS,CQBS_alphas,CQBS_years
 
 def bar_example(data1,data2,picname="",show=True):
     alist=[0.1,0.5,0.9]

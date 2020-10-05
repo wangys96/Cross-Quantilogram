@@ -5,14 +5,13 @@ from .stationarybootstrap import Bootstrap
 from .crossquantilogram import CrossQuantilogram
 from .qtests import LjungBoxQ
 
-def CQBS(data1,a1,data2,a2,k,cqcl=0.95,testf=LjungBoxQ,testcl=0.95,
-            n=1000,verbose=True):
+def CQBS(data1,a1,data2,a2,k,cqcl=0.95,testf=LjungBoxQ,testcl=0.95,n=1000,verbose=True):
     '''
-    Calculate Cross-Quantilogram result on many lags [1,k] and 1 particular quantile (a1,a2) from data2 to data1.
-    Generating CQ data for bar plotting.
-    Return a DataFrame. Shape:[lag, item(a dict{"cq","cq_lower","cq_upper","q","qc"})]
+    Calculate Cross-Quantilogram statistics for a series of lags [1,k] at 1 specific quantile pair (a1,a2) from data2 to data1.
+    Generating CQ data for bar plotting. And Return a DataFrame. Shape:[lag, item(a dict{"cq","cq_lower","cq_upper","q","qc"})]
     
-    Input:
+    Input
+    -----
         data1: array-like, serie-1.
         a1: float between (0,1), quantile of serie-1.
         data2: array-like, serie-2 (k lagged).
@@ -23,8 +22,11 @@ def CQBS(data1,a1,data2,a2,k,cqcl=0.95,testf=LjungBoxQ,testcl=0.95,
         testcl: optional float between (0,1), the critical level of Q statistics, 0.95 as default. 
         n: optional integer, the repeating time of bootstrap, 1000 as default.
         verbose: optional boolean, if it will print the procedure.
-    Output:
+
+    Output
+    ------
         pandas.DataFrame containing k rows and 5 cols("cq","cq_upper","cq_lower","q","qc")
+
     '''
     length = data1.shape[0]
     cqlist,qlist=[],[] 
@@ -55,12 +57,13 @@ def CQBS(data1,a1,data2,a2,k,cqcl=0.95,testf=LjungBoxQ,testcl=0.95,
 def CQBS_alphas(data1,a1list,data2,a2list,k=1,cqcl=0.95,testf=LjungBoxQ,testcl=0.95,
                 all=False,n=1000,verbose=True):
     '''
-    Calculate Cross-Quantilogram result on lags [1,k] and {a1list}×{a2list} quantile from data2 to data1.
+    Calculate Cross-Quantilogram result for a series of lags [1,k] and {a1list}×{a2list} quantiles from data2 to data1.
     Generating CQ data for many line plottings or heatmap plotting.
     Return a 2D list of DataFrame(if all=True) or a 2D list of dict(if all=False). Shape:[row(data2),col(data1)]
     It's slow beacuse of calling CQBS for len(a1list)×len(a2list) times.
 
-    Input:
+    Input
+    -----
         data1: array-like, serie-1.
         a1list: array-like and between (0,1), quantiles of serie-1.
         data2: array-like, serie-2 (k lagged).
@@ -69,11 +72,13 @@ def CQBS_alphas(data1,a1list,data2,a2list,k=1,cqcl=0.95,testf=LjungBoxQ,testcl=0
         cqcl: optional float between (0,1), the level of confidence interval of CQ, 0.95 as default.
         testf: optional function, a function calculating the test statistics Q, qtests.LjungBoxQ as default.
         testcl: optional float between (0,1), the critical level of Q statistics, 0.95 as default.
-        all: optional boolean, True if you want to save all [1,k] results so the 2D list will contain DataFrame; \
+        all: optional boolean, True if you want to save all [1,k] results so the 2D list will contain DataFrame; 
             False if you want to save the last result (only for lag k) so the 2D list will contain dict, False as default.
         n: optional integer, the repeating time of bootstrap, 1000 as default.
         verbose: optional boolean, if it will print the procedure.
-    Output:
+
+    Output
+    ------
         2D list, rows(1D) are data2, cols(2D) are data1, items are dicts or DataFrame(return of CQ_lags)
     '''
     mat,total,count=[],len(a1list)*len(a2list),1
@@ -99,7 +104,8 @@ def CQBS_years(data1,a1,data2,a2,k=1,window=1,cqcl=0.95,testf=LjungBoxQ,testcl=0
     Return 1 DataFrame(if all=False) or a list of DataFrame(if all=True) at lag∈[1,k].
     It's slow beacuse of calling CQBS for #years times.
 
-    Input:
+    Input
+    -----
         data1: array-like, serie-1.
         a1: float between (0,1), quantile of serie-1.
         data2: array-like, serie-2 (k lagged).
@@ -109,14 +115,16 @@ def CQBS_years(data1,a1,data2,a2,k=1,window=1,cqcl=0.95,testf=LjungBoxQ,testcl=0
         cqcl: optional float between (0,1), the level of confidence interval of CQ, 0.95 as default.
         testf: optional function, a function calculating the test statistics Q, qtests.LjungBoxQ as default.
         testcl: optional float between (0,1), the critical level of Q statistics, 0.95 as default.
-        all: optional boolean, True if you want to save all [1,k] results so the list will contain k DataFrame, \
+        all: optional boolean, True if you want to save all [1,k] results so the list will contain k DataFrame, 
             False if you want to save the last result (only for lag k) so it will return 1 DataFrame, False as default.
         n: optional integer, the repeating time of bootstrap, 1000 as default.
         verbose: optional boolean, if it will print the procedure.
-    Output:
+
+    Output
+    ------
         pandas.DataFrame(return of CQ_lags) or a list of pandas.DataFrame(if all=True).
     '''
-    startyear,endyear=data1.index[0].year,data1.index[-1].year
+    startyear,endyear = data1.index[0].year,data1.index[-1].year
     if window>1+endyear-startyear:
         raise ValueError("length of window must <= data range")
 
@@ -129,12 +137,12 @@ def CQBS_years(data1,a1,data2,a2,k=1,window=1,cqcl=0.95,testf=LjungBoxQ,testcl=0
     res,yearindex=[],[str(x) for x in range(startyear+window-1,endyear+1)]
     if all:
         for i in [[df.iloc[x] for df in cqres] for x in range(k)]:
-            merged=pd.concat(i,ignore_index=True)
-            merged.index=yearindex
+            merged = pd.concat(i,ignore_index=True)
+            merged.index = yearindex
             res.append(merged)        
     else:
         res=pd.concat(cqres,ignore_index=True)
-        res.index=yearindex
+        res.index = yearindex
     if verbose:
         print("Bootstraping CQ done      ")
     return res

@@ -5,14 +5,18 @@ def CrossQuantilogram(x1,alpha1,x2,alpha2,k):
     '''
     Calculate and return Cross-Quantilogram ρ.
 
-    Input: x1 series,
+    Input
+    -----
         x1:array-like, x1's quantile level.
         alpha1: float between (0,1), quantile of serie-1.
         x2:array-like, x2's quantile level (k lagged).
         alpha2: float between (0,1), quantile of serie-2.
         k: non-negative integer, the serie-2's lag.
-    Output:
-        A float number.
+
+    Output
+    ------
+        The Cross-Quantilogram statistics, a float number.
+
     '''
     if k==0:
         array_x1 = np.array(x1)
@@ -37,7 +41,7 @@ def CrossQuantilogram(x1,alpha1,x2,alpha2,k):
     psi2 = (array_x2 < q2) - alpha2
     
     numerator = np.sum(np.multiply(psi1, psi2.reshape(psi2.shape[0],1)),axis=0)
-    denominator = np.multiply(np.sqrt(np.sum(np.square(psi1),axis=0)), \
+    denominator = np.multiply(np.sqrt(np.sum(np.square(psi1),axis=0)), 
                                 np.sqrt(np.sum(np.square(psi2))))
     if numerator.shape[0]==1:
         return np.divide(numerator, denominator)[0]
