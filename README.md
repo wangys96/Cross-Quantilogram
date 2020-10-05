@@ -20,7 +20,7 @@ For python environment, I recommand you to install [Anaconda 3](https://www.anac
 
 To install `Cross-Quantilogram` :
 ```shell
-pip install setup.py
+python setup.py install
 ```
 then try:
 ```python
